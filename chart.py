@@ -16,7 +16,7 @@ data = pd.DataFrame(
     columns=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 )
 
-# Create matplotlib figure with 8x8 inches (~512x512 pixels at 64 dpi)
+# Create matplotlib figure with 8x8 inches size which equals 512x512 pixels at 64 dpi
 plt.figure(figsize=(8, 8))
 
 # Create heatmap with annotations, colorbar, and a custom colormap
@@ -36,9 +36,11 @@ plt.title("Customer Engagement Heatmap (Weekly)", fontsize=18, pad=20)
 plt.xlabel("Day of Week", fontsize=14)
 plt.ylabel("Customer", fontsize=14)
 
-# Save figure as PNG, 512x512 pixels, tight layout
-plt.savefig("chart.png", dpi=64, bbox_inches="tight")
+# Adjust layout to ensure nothing is cut off
+plt.subplots_adjust(left=0.15, right=0.85, top=0.85, bottom=0.15)
+
+# Save figure as PNG, exactly 512x512 pixels, without bbox_inches='tight'
+plt.savefig("chart.png", dpi=64)
 plt.close()
 
 print("Heatmap saved as chart.png")
-
